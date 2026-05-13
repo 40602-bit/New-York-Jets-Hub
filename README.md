@@ -1,2 +1,2 @@
 # New-York-Jets-Hub
-New York jets hub made by claude ai
+ https://40602-bit.github.io/New-York-Jets-Hub/
