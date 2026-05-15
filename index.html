@@ -663,6 +663,99 @@
   }
   .schedule-note p { color: #888; margin-bottom: 20px; }
 
+  /* Schedule Section Styles */
+  .schedule-section {
+    margin-bottom: 40px;
+  }
+  .schedule-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: white;
+    background: var(--jets-green);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .schedule-game {
+    background: var(--jets-mid);
+    border: 1px solid var(--jets-border);
+    border-left: 4px solid var(--jets-green);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: 100px 60px 1fr 100px;
+    gap: 20px;
+    align-items: center;
+    transition: border-color .2s, background .2s;
+  }
+  .schedule-game:hover {
+    border-left-color: var(--jets-green-bright);
+    background: rgba(18,87,64,0.08);
+  }
+  .schedule-game.bye {
+    grid-template-columns: 100px 1fr;
+    background: rgba(26,122,80,0.1);
+    border-left-color: var(--jets-gold);
+  }
+  .schedule-week {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--jets-green-bright);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .schedule-datetime {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #999;
+    line-height: 1.4;
+  }
+  .schedule-matchup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .schedule-homeaway {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--jets-green-bright);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 40px;
+    text-align: center;
+  }
+  .schedule-opponent {
+    flex: 1;
+  }
+  .schedule-opponent-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 3px;
+  }
+  .schedule-details {
+    font-size: 12px;
+    color: #666;
+  }
+  .schedule-location {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+  }
+  .schedule-bye-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--jets-gold);
+  }
+
   /* ─── PHOTOS / VIDEO ─── */
   .media-grid {
     display: grid;
@@ -1087,7 +1180,7 @@
       </div>
       <div class="quick-card" onclick="showTab('schedule')">
         <h4>Schedule</h4>
-        <p>Upcoming games, event dates, and ticket information.</p>
+        <p>Upcoming games, event dates, and ticket information. Will be coming out May 14th 2026 at 8:00 PM EST</p>
       </div>
       <div class="quick-card" onclick="showTab('photos')">
         <h4>Photos</h4>
@@ -1334,11 +1427,281 @@ The Jets usually end seasons on the road against AFC East teams, but this year t
 <!-- ═══════════════════════════════════ SCHEDULE ═══════════════════════════════════ -->
 <div id="tab-schedule" class="tab-section">
   <div class="main-content">
-    <div class="page-title-bar"><h2>Schedule</h2></div>
-    <div class="schedule-note">
-      <h3>2026 Season Schedule</h3>
-      <p>View the full Jets schedule, game times, opponents, and ticket availability at the official New York Jets schedule page.</p>
-      <a href="https://www.newyorkjets.com/schedule" target="_blank" class="btn-primary">View Full Schedule on Jets.com →</a>
+    <div class="page-title-bar"><h2>2026 NY Jets Schedule</h2></div>
+    
+    <!-- PRESEASON -->
+    <div class="schedule-section">
+      <div class="schedule-section-title">Preseason</div>
+      
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 1</div>
+        <div class="schedule-datetime">Fri 08/14<br/>7:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Tampa Bay Buccaneers</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">WCBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 2</div>
+        <div class="schedule-datetime">Fri 08/21<br/>7:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Pittsburgh Steelers</div>
+            <div class="schedule-details">Acrisure Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">WCBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 3</div>
+        <div class="schedule-datetime">Fri 08/28<br/>7:30 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">New York Giants</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">WCBS</div>
+      </div>
+    </div>
+
+    <!-- REGULAR SEASON -->
+    <div class="schedule-section">
+      <div class="schedule-section-title">Regular Season</div>
+      
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 1</div>
+        <div class="schedule-datetime">Sun 09/13<br/>1:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Tennessee Titans</div>
+            <div class="schedule-details">Nissan Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 2</div>
+        <div class="schedule-datetime">Sun 09/20<br/>1:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Green Bay Packers</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">FOX</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 3</div>
+        <div class="schedule-datetime">Sun 09/27<br/>1:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Detroit Lions</div>
+            <div class="schedule-details">Ford Field</div>
+          </div>
+        </div>
+        <div class="schedule-location">FOX</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 4</div>
+        <div class="schedule-datetime">Sun 10/04<br/>1:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Chicago Bears</div>
+            <div class="schedule-details">Soldier Field</div>
+          </div>
+        </div>
+        <div class="schedule-location">FOX</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 5</div>
+        <div class="schedule-datetime">Sun 10/11<br/>1:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Cleveland Browns</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 6</div>
+        <div class="schedule-datetime">Sun 10/18<br/>1:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">New England Patriots</div>
+            <div class="schedule-details">Gillette Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 7</div>
+        <div class="schedule-datetime">Sun 10/25<br/>1:00 PM EDT</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Miami Dolphins</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 8</div>
+        <div class="schedule-datetime">Sun 11/01<br/>1:00 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Las Vegas Raiders</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">FOX</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 9</div>
+        <div class="schedule-datetime">Sun 11/08<br/>1:00 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Kansas City Chiefs</div>
+            <div class="schedule-details">GEHA Field at Arrowhead Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 10</div>
+        <div class="schedule-datetime">Sun 11/15<br/>1:00 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Buffalo Bills</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 11</div>
+        <div class="schedule-datetime">Sun 11/22<br/>4:05 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Los Angeles Chargers</div>
+            <div class="schedule-details">SoFi Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">FOX</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 12</div>
+        <div class="schedule-datetime">Sun 11/29<br/>1:00 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Miami Dolphins</div>
+            <div class="schedule-details">Hard Rock Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game bye">
+        <div class="schedule-week">WEEK 13</div>
+        <div class="schedule-bye-text">BYE WEEK</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 14</div>
+        <div class="schedule-datetime">Sun 12/13<br/>1:00 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Denver Broncos</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 15</div>
+        <div class="schedule-datetime">Sun 12/20<br/>4:05 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Arizona Cardinals</div>
+            <div class="schedule-details">State Farm Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">FOX</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 16</div>
+        <div class="schedule-datetime">Sun 12/27<br/>1:00 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">New England Patriots</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 17</div>
+        <div class="schedule-datetime">Sun 01/03<br/>1:00 PM EST</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">VS</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Minnesota Vikings</div>
+            <div class="schedule-details">MetLife Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">CBS</div>
+      </div>
+
+      <div class="schedule-game">
+        <div class="schedule-week">WEEK 18</div>
+        <div class="schedule-datetime">TBD</div>
+        <div class="schedule-matchup">
+          <div class="schedule-homeaway">AT</div>
+          <div class="schedule-opponent">
+            <div class="schedule-opponent-name">Buffalo Bills</div>
+            <div class="schedule-details">Highmark Stadium</div>
+          </div>
+        </div>
+        <div class="schedule-location">TBD</div>
+      </div>
     </div>
   </div>
 </div>
@@ -1348,6 +1711,16 @@ The Jets usually end seasons on the road against AFC East teams, but this year t
   <div class="main-content">
     <div class="page-title-bar"><h2>Photos</h2></div>
     <div class="media-grid" style="margin-bottom:20px;">
+      <div class="media-card">
+        <a href="https://www.newyorkjets.com/photos/breece-hall-jets-career-photo-gallery" target="_blank">
+          <img src="https://static.clubs.nfl.com/image/upload/t_new_photo_album/f_png/jets/kry47e8jnifhcbzdvcss.png" alt="Breece Hall Career Gallery" onerror="this.style.background='#1a2a1a';this.style.display='block'">
+        </a>
+        <div class="media-card-body">
+          <h4>Breece Hall Jets Career Photo Gallery</h4>
+          <p>Explore Breece Hall's Jets career through this official photo gallery.</p>
+          <a class="media-link" href="https://www.newyorkjets.com/photos/breece-hall-jets-career-photo-gallery" target="_blank">View Gallery on Jets.com →</a>
+        </div>
+      </div>
       <div class="media-card">
         <a href="https://www.newyorkjets.com/photos/jets-rookie-minicamp-best-photo-gallery-05-11-2026" target="_blank">
           <img src="https://static.clubs.nfl.com/image/upload/t_new_photo_album/f_auto/jets/mpt5uhnln2h6yb13enb6.jpg" alt="Rookie Minicamp Gallery" onerror="this.style.background='#1a2a1a';this.style.display='block'">
