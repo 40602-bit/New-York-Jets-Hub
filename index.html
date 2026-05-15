@@ -756,6 +756,84 @@
     color: var(--jets-gold);
   }
 
+  /* Team Info Modal */
+  .team-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    animation: fadeIn 0.3s;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .team-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-content {
+    background: var(--jets-mid);
+    border: 2px solid var(--jets-green);
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    animation: slideUp 0.3s;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--jets-green);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover {
+    background: var(--jets-accent);
+  }
+  .modal-team-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: white;
+    margin-bottom: 16px;
+  }
+  .modal-team-desc {
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .schedule-game.clickable {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .schedule-game.clickable:hover {
+    background: rgba(18,87,64,0.15);
+    border-left-color: var(--jets-green-bright);
+    transform: translateX(4px);
+  }
+
   /* ─── PHOTOS / VIDEO ─── */
   .media-grid {
     display: grid;
@@ -1211,12 +1289,21 @@
     <div class="news-grid">
       <div>
         <div class="news-feature">
-          <img src="https://static.www.nfl.com/image/upload/t_landscape_tablet/league/znt4otzei1yt1stsoese.jpg" alt="Jets News" onerror="this.style.background='#1a2a1a';this.style.height='200px'">
+          <img src="https://static.www.nfl.com/image/upload/t_landscape_tablet/league/znt4otzei1yt1stsoese.jpg" alt="Jets News" class="img-contain" onerror="this.style.background='#1a2a1a';this.style.height='200px'">
           <div class="news-feature-body">
             <span class="news-tag">Breaking</span>
             <h3>Breece Hall Locked In: Jets Resign RB to 3-Year, $45M Deal Through 2029</h3>
             <p>The Jets secured their backfield cornerstone, keeping Hall under contract until 2029 as the team builds around its 2026 draft class.</p>
             <div class="news-meta">May 11, 2026 — NY Jets Hub</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;" class="news-feature">
+          <img src="https://i.postimg.cc/nrmmMtst/bea192f7-d75f-4393-802f-1c6e7234f342.png" alt="Tim Patrick" class="img-contain clickable-news" onclick="showNewsModal('timpatrick')" style="cursor:pointer;" onerror="this.style.background='#1a2a1a';this.style.height='220px'">
+          <div class="news-feature-body">
+            <span class="news-tag">Signing</span>
+            <h3>Tim Patrick Signs a one year Deal with the jets</h3>
+            <p>The Jets have signed WR Tim Patrick and released K Will Ferrin.</p>
+            <div class="news-meta">May 15, 2026 — NY Jets Hub</div>
           </div>
         </div>
         <div style="margin-top:16px;" class="news-feature">
@@ -1758,6 +1845,16 @@ The Jets usually end seasons on the road against AFC East teams, but this year t
   <div class="main-content">
     <div class="page-title-bar"><h2>Video</h2></div>
     <div class="media-grid" style="margin-bottom:20px;">
+      <div class="media-card">
+        <a href="https://www.newyorkjets.com/video/2026-jets-schedule-release-video" target="_blank">
+          <img src="https://static.clubs.nfl.com/image/upload/t_editorial_landscape_mobile/f_auto/jets/ij1fruooy2kbm1hfj1tm.jpg" alt="New York Jets Schedule Release Video" onerror="this.style.background='#125740';this.style.display='block'">
+        </a>
+        <div class="media-card-body">
+          <h4>New York Jets Schedule Release Video</h4>
+          <p>Watch the 2026 schedule release video featuring the full Jets schedule breakdown and season preview.</p>
+          <a class="media-link" href="https://www.newyorkjets.com/video/2026-jets-schedule-release-video" target="_blank">Watch on newyorkjets.com →</a>
+        </div>
+      </div>
       <div class="media-card">
         <a href="https://www.newyorkjets.com/video/2026-jets-rookie-minicamp-all-access-david-bailey-05-12-2026" target="_blank">
           <img src="https://static.clubs.nfl.com/image/upload/t_editorial_landscape_8_desktop_mobile/f_png/jets/aesswyj5mg6hkstrstsr.png" alt="David Bailey Minicamp" onerror="this.style.background='#1a2a1a';this.style.display='block'">
@@ -2301,7 +2398,76 @@ document.querySelectorAll('.draft-card').forEach(card => {
     this.style.boxShadow = '';
   });
 });
+
+// Team descriptions for 2026 season
+const teamDescriptions = {
+  'Tennessee Titans': 'The Titans are rebuilding with young talent and look to develop their offensive core. They\'re expected to be competitive in the AFC South but may struggle against stronger opponents. Key focus on quarterback development and defense improvement.',
+  'Green Bay Packers': 'The Packers remain a strong NFC contender with their talented roster. They\'ll look to make another Super Bowl run with a balanced offense and opportunistic defense. Expect them to compete at a high level throughout the season.',
+  'Detroit Lions': 'The Lions have emerged as one of the AFC\'s elite teams with a dynamic offense and improving defense. They\'re legitimate Super Bowl contenders this year with strong performances expected throughout the season.',
+  'Chicago Bears': 'The Bears are in transition with new offensive additions. They have potential for a surprising season with their defensive strength, but consistency will be key to their success in 2026.',
+  'Cleveland Browns': 'The Browns remain a competitive AFC team with a strong rushing attack and solid defense. They\'ll be in contention for the AFC North title with their experienced roster.',
+  'New England Patriots': 'The Patriots are looking to rebuild and remain relevant in the AFC East. They bring championship experience but may take time to develop their young talent.',
+  'Miami Dolphins': 'The Dolphins are perennial AFC East rivals with an explosive offense. They\'ll be in the mix for division titles with playoff aspirations every year.',
+  'Las Vegas Raiders': 'The Raiders look to return to form with their talented roster. They have the potential to compete in the AFC West with balanced offensive and defensive play.',
+  'Kansas City Chiefs': 'The Chiefs remain the AFC powerhouses with championship pedigree. They\'ll be competitive for another Super Bowl run with their experienced roster and innovative offense.',
+  'Buffalo Bills': 'The Bills are AFC East contenders with a strong defense and solid offense. They have the talent to make a deep playoff run but face tough competition in their division.',
+  'Los Angeles Chargers': 'The Chargers have an explosive offense and are looking for playoff success. They\'re building momentum and could surprise this season with consistent play.',
+  'Denver Broncos': 'The Broncos are developing their young talent and looking to compete in the AFC West. They have potential for improvement this season with their defensive strength.',
+  'Arizona Cardinals': 'The Cardinals have a talented roster and are looking to make a playoff push. They bring competitive fire to every game and can be dangerous when healthy.',
+  'Minnesota Vikings': 'The Vikings are competitive NFC contenders with a strong defense and balanced offense. They\'re always in the mix for playoff contention in the NFC.',
+  'Tampa Bay Buccaneers': 'The Buccaneers remain competitive in the NFC South with their experienced roster. They\'ll look to compete for division titles with their balanced approach.',
+  'Pittsburgh Steelers': 'The Steelers bring championship tradition and strong defense to every matchup. They remain one of the AFC\'s competitive teams with experienced leadership.',
+  'New York Giants': 'The Giants are in the NFC East division with rising talent and developing players. They bring competitive spirit to their division rivals.'
+};
+
+// Show team info modal
+function showTeamInfo(teamName) {
+  const modal = document.getElementById('teamModal');
+  const teamNameEl = document.getElementById('modalTeamName');
+  const teamDescEl = document.getElementById('modalTeamDesc');
+  
+  teamNameEl.textContent = teamName;
+  teamDescEl.textContent = teamDescriptions[teamName] || 'Team information coming soon.';
+  
+  modal.classList.add('show');
+}
+
+// Close modal
+function closeTeamModal() {
+  const modal = document.getElementById('teamModal');
+  modal.classList.remove('show');
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('teamModal');
+  if (event.target === modal) {
+    modal.classList.remove('show');
+  }
+});
+
+// Make schedule games clickable
+document.querySelectorAll('.schedule-game').forEach(game => {
+  if (!game.classList.contains('bye')) {
+    game.classList.add('clickable');
+    const teamName = game.querySelector('.schedule-opponent-name');
+    if (teamName) {
+      game.addEventListener('click', function() {
+        showTeamInfo(teamName.textContent);
+      });
+    }
+  }
+});
 </script>
+
+<!-- Team Info Modal -->
+<div id="teamModal" class="team-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeTeamModal()">&times;</button>
+    <div class="modal-team-name" id="modalTeamName">Team Name</div>
+    <div class="modal-team-desc" id="modalTeamDesc">Team description will appear here.</div>
+  </div>
+</div>
 
 </body>
 </html>
