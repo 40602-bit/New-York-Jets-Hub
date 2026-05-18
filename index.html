@@ -1290,7 +1290,7 @@
     <div class="news-grid">
       <div>
         <div class="news-feature">
-          <img src="https://static.www.nfl.com/image/upload/t_landscape_tablet/league/znt4otzei1yt1stsoese.jpg" alt="Jets News" class="img-contain" onerror="this.style.background='#1a2a1a';this.style.height='200px'">
+          <img src="https://static.www.nfl.com/image/upload/t_landscape_tablet/league/znt4otzei1yt1stsoese.jpg" alt="Jets News" class="img-contain" style="object-fit: contain; object-position: center center;" onerror="this.style.background='#1a2a1a';this.style.height='200px'">
           <div class="news-feature-body">
             <span class="news-tag">Breaking</span>
             <h3>Breece Hall Locked In: Jets Resign RB to 3-Year, $45M Deal Through 2029</h3>
@@ -1299,7 +1299,7 @@
           </div>
         </div>
         <div style="margin-top:16px;" class="news-feature">
-          <img src="https://i.postimg.cc/nrmmMtst/bea192f7-d75f-4393-802f-1c6e7234f342.png" alt="Tim Patrick" class="img-contain clickable-news" onclick="showNewsModal('timpatrick')" style="cursor:pointer;" onerror="this.style.background='#1a2a1a';this.style.height='220px'">
+          <img src="https://i.postimg.cc/nrmmMtst/bea192f7-d75f-4393-802f-1c6e7234f342.png" alt="Tim Patrick" class="img-contain clickable-news" onclick="showNewsModal('timpatrick')" style="cursor:pointer; object-position: top center;" onerror="this.style.background='#1a2a1a';this.style.height='220px'">
           <div class="news-feature-body">
             <span class="news-tag">Signing</span>
             <h3>Tim Patrick Signs a one year Deal with the jets</h3>
@@ -2447,6 +2447,37 @@ window.addEventListener('click', function(event) {
   }
 });
 
+// Close news modal when clicking outside
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('newsModal');
+  if (event.target === modal) {
+    modal.classList.remove('show');
+  }
+});
+
+const newsDetails = {
+  timpatrick: {
+    title: 'Tim Patrick Signs with the Jets',
+    description: 'The Jets have signed WR Tim Patrick and released K Will Ferrin. Patrick brings veteran depth to the receiving corps and will compete for snaps in 2026.'
+  }
+};
+
+function showNewsModal(newsKey) {
+  const modal = document.getElementById('newsModal');
+  const titleEl = document.getElementById('modalNewsTitle');
+  const descEl = document.getElementById('modalNewsDesc');
+  const details = newsDetails[newsKey] || {};
+
+  titleEl.textContent = details.title || 'News Details';
+  descEl.textContent = details.description || 'More news information will be available soon.';
+  modal.classList.add('show');
+}
+
+function closeNewsModal() {
+  const modal = document.getElementById('newsModal');
+  modal.classList.remove('show');
+}
+
 // Make schedule games clickable
 document.querySelectorAll('.schedule-game').forEach(game => {
   if (!game.classList.contains('bye')) {
@@ -2467,6 +2498,14 @@ document.querySelectorAll('.schedule-game').forEach(game => {
     <button class="modal-close" onclick="closeTeamModal()">&times;</button>
     <div class="modal-team-name" id="modalTeamName">Team Name</div>
     <div class="modal-team-desc" id="modalTeamDesc">Team description will appear here.</div>
+  </div>
+</div>
+
+<div id="newsModal" class="team-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeNewsModal()">&times;</button>
+    <div class="modal-team-name" id="modalNewsTitle">News Title</div>
+    <div class="modal-team-desc" id="modalNewsDesc">News description will appear here.</div>
   </div>
 </div>
 
